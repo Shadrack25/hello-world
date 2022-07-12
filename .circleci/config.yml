@@ -5,12 +5,6 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build:
-     docker:
-       - image: circleci/node:17.2.0
-     steps:
-       - checkout # check out the code in the project directory
-       - run: echo "hello world"
   create_infrastructure: 
     docker:
       - image: circleci/node:17.2.0
@@ -33,7 +27,4 @@ jobs:
 workflows:
   say-hello-workflow:
     jobs:
-      - build
-      - create_infrastructure:
-          requires:
-            - build
+      - create_infrastructure
